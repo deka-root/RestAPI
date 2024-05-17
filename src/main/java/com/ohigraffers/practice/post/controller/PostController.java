@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.nio.charset.Charset;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -133,7 +132,7 @@ public class PostController {
    @Operation(summary = "포스트 수정", description = "등록된 포스트를 수정한다.")
    /* RequestMapping 어노테이션 작성 */
    @PutMapping("/post/{postCode}")
-    public ResponseEntity<Void> modifyPost(@PathVariable int postCode, @RequestBody PostUpdateRequest modifyPost) {
+    public ResponseEntity<Void> modifyPost(@PathVariable Long postCode, @RequestBody PostUpdateRequest modifyPost) {
 
         /* 리스트에서 찾아서 수정 */
        Post foundPost = posts.stream()
@@ -152,7 +151,7 @@ public class PostController {
     @Operation(summary = "포스트 삭제", description = "등록된 포스트를 삭제한다.")
     /* RequestMapping 어노테이션 작성 */
     @DeleteMapping("/post/{postCode}")
-    public ResponseEntity<Void> removeUser(@PathVariable int postCode) {
+    public ResponseEntity<Void> removeUser(@PathVariable Long postCode) {
 
         /* 리스트에서 찾아서 삭제 */
 //        PostResponse foundPost = PostResponse.from(posts.stream()
